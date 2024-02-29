@@ -1,0 +1,22 @@
+## Why ./abc works but not /abc
+
+The difference in behavior you're noticing between /src/main.tsx and ./src/main.tsx in the context of a file path, especially when clicking to navigate in an IDE or a code editor, is rooted in how these paths are interpreted:
+
+./src/main.tsx
+Meaning: This path specifies a file named main.tsx located in the src directory, relative to the current file or directory context in which the path is used. The ./ indicates the current directory.
+Usage: When you use ./src/main.tsx, you're telling the system or the application to look for the src directory at the same level as the current directory or file, and then navigate into it to find main.tsx.
+Click Behavior: In most IDEs or text editors, clicking a relative path like this correctly navigates to the file because the path is correctly resolved based on the relative location.
+/src/main.tsx
+Meaning: This path is considered an absolute path in Unix/Linux environments, starting from the root directory (/) of the filesystem. It indicates that there should be a src directory at the root of your filesystem with a file named main.tsx inside it.
+Usage: Absolute paths are used when you want to specify a file or directory location starting from the root of the filesystem, independent of the current working directory.
+Click Behavior: Clicking an absolute path like /src/main.tsx in an IDE or text editor might result in an error or a "does not exist" message if it tries to resolve the path from the root of the filesystem (or project root in some development environments) and fails to find the specified file. This is because, in the context of most projects, src/main.tsx is not located at the filesystem's root but rather within the project directory.
+Conclusion
+When specifying paths in code or configuration files:
+
+Use ./src/main.tsx for relative paths from the current file or directory.
+The leading / in /src/main.tsx makes the path absolute, which is likely not what you intend unless you're referring to the filesystem root.
+The reason ./src/main.tsx works and /src/main.tsx does not (in the context of navigating within an IDE) is likely because your project's src directory is not at the root of your filesystem or the root directory set by your development environment. Always ensure you're using the correct type of path (relative or absolute) based on the location of the files you're referring to.
+
+
+
+
