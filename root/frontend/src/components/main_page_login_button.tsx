@@ -1,6 +1,6 @@
 import { Button, Box } from '@mui/material';
 
-function LoginButton() {
+export default function LoginButton() {
   return (
     <>
       <Box
@@ -14,5 +14,3 @@ function LoginButton() {
     </>
   );
 }
-
-export default LoginButton;

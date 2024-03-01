@@ -1,8 +1,8 @@
 import { Container } from '@mui/material';
-import UserDetailsBox from './user_details_input_box';
+import { UserDetailsBox, RememberMeCheckBox } from './input_fields';
 import LoginButton from './main_page_login_button';
 
-function LoginPage() {
+export default function LoginPage() {
   return (
     <Container
       sx={{
@@ -10,14 +10,13 @@ function LoginPage() {
         flexDirection: 'column', // Stack children vertically
         alignItems: 'center', // Center children horizontally
         justifyContent: 'center', // Center children vertically (if the container has a set height)
-        height: '100vh',
+        minHeight: '100vh',
         gap: 2, // space between children
         textAlign: 'center' // Can remove in the future probably
       }}>
       <UserDetailsBox />
+      <RememberMeCheckBox />
       <LoginButton />
     </Container>
   );
 }
-
-export default LoginPage;

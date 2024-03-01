@@ -1,5 +1,5 @@
 ## Why ./abc works but not /abc
-
+// ChatGPT:
 The difference in behavior you're noticing between /src/main.tsx and ./src/main.tsx in the context of a file path, especially when clicking to navigate in an IDE or a code editor, is rooted in how these paths are interpreted:
 
 ./src/main.tsx
@@ -19,4 +19,75 @@ The reason ./src/main.tsx works and /src/main.tsx does not (in the context of na
 
 
 
+# DO NOT use default export because u can mess up the name of whatever function you are trying to import during the import statement. Only use it if you do not care what is the name of the function being exported and dont care if u make a spelling error during importing. 
+Reason is because default export can only be used once in each file and anything else need to be named export. Examples:
+// This works
+export function UserDetailsBox() {      // <=default exports
+  return (
+    <Container
+      component='main'
+      maxWidth='xs'>
+      <UsernameField />
+      <PasswordField />
+    </Container>
+  );
+}
 
+export default function RememberMeCheckBox() {      // <=named exports
+  return (
+    <Container>
+      <Checkbox {...label} />
+    </Container>
+  );
+}
+
+// This works
+export function UserDetailsBox() {
+  return (
+    <Container
+      component='main'
+      maxWidth='xs'>
+      <UsernameField />
+      <PasswordField />
+    </Container>
+  );
+}
+
+export function RememberMeCheckBox() {
+  return (
+    <Container>
+      <Checkbox {...label} />
+    </Container>
+  );
+}
+
+// This doesnt work
+export default function UserDetailsBox() {
+  return (
+    <Container
+      component='main'
+      maxWidth='xs'>
+      <UsernameField />
+      <PasswordField />
+    </Container>
+  );
+}
+export default function RememberMeCheckBox() {
+  return (
+    <Container>
+      <Checkbox {...label} />
+    </Container>
+  );
+}
+
+When importing, default functions:
+import RememberMeCheckBox from './input_fields';
+named functions:
+import { RememberMeCheckBox } from './input_fields';
+mixed functions:
+import { UserDetailsBox }, RememberMeCheckBox  from './input_fields';
+// named and default functions have different syntax (braces)
+
+// if u make a spelling error:
+import RememberMeCheckBoxSpellingError  from './input_fields';
+// above will still work but bad readability
