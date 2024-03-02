@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import LoginPage from './components/test_button.tsx';
+import LoginPage from './pages/login_page.tsx';
 import './css/universal.css';
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 
