@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [password, setPassword] = React.useState<string>('');
   const [rememberMe, setRememberMe] = React.useState<boolean>(false);
 
+  // Debugging
   const handleLogin = () => {
     console.log('Logged in: ' + username + ' ' + password + ' ' + rememberMe);
   };

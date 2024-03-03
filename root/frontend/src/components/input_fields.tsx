@@ -2,8 +2,8 @@ import { Container, TextField, Checkbox, FormControlLabel } from '@mui/material'
 import React from 'react';
 
 interface UserDetailsBoxProps {
-  onSetUsername: React.Dispatch<React.SetStateAction<string>>;
-  onSetPassword: React.Dispatch<React.SetStateAction<string>>;
+  onSetUsername?: React.Dispatch<React.SetStateAction<string>>;
+  onSetPassword?: React.Dispatch<React.SetStateAction<string>>;
 }
 interface RememberMeCheckBoxProps {
   onSetRememberMe: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,11 +15,15 @@ export function UserDetailsBox({ onSetUsername, onSetPassword }: UserDetailsBoxP
 
   const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // setUsername(event.target.value);
-    onSetUsername(event.target.value);
+    if (onSetUsername) {
+      onSetUsername(event.target.value);
+    }
   };
 
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onSetPassword(event.target.value);
+    if (onSetPassword) {
+      onSetPassword(event.target.value);
+    }
   };
 
   return (
@@ -60,6 +64,7 @@ export function RememberMeCheckBox({ onSetRememberMe }: RememberMeCheckBoxProps)
       <FormControlLabel
         control={
           <Checkbox
+            id='login-remember-checkbox'
             defaultChecked={false}
             onChange={handleRememberMeBoxChange}
           />
