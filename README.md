@@ -3,8 +3,9 @@
 ## Frontend installation:
 1. ```cd root/frontend```
 2. ```npm install```
-3. ```npm install @mui/material @emotion/react @emotion/styled```
-4. ```npm install react@latest```
+3. ```npm install react-router-dom@6```
+4. ```npm install @mui/material @emotion/react @emotion/styled```
+5. ```npm install react@latest```
 
 ## Current tech stacks:
 ### Frontend: 

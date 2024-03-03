@@ -2,8 +2,10 @@ import { Container } from '@mui/material';
 import { UserDetailsBox, RememberMeCheckBox } from '../components/input_fields';
 import LoginButton from '../components/login_button';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const [username, setUsername] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [rememberMe, setRememberMe] = React.useState<boolean>(false);
@@ -11,6 +13,7 @@ export default function LoginPage() {
   // Debugging
   const handleLogin = () => {
     console.log('Logged in: ' + username + ' ' + password + ' ' + rememberMe);
+    navigate('/storage_main_page');
   };
 
   return (
